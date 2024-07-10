@@ -75,7 +75,7 @@
       }
     }
     
-#---------ejecutar la politica enrich despues de haberla ejecutado----#####
+#---------ejecutar la politica enrich despues de haberla creado----#####
 
     POST /_enrich/policy/enrich_base_etl/_execute
 
