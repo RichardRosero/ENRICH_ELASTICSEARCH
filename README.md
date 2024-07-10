@@ -61,6 +61,7 @@
 
 # COMENZAMOS EL PROCESO ENRICH #
 ##--------creamos la politica enrich----------####
+##---llamaremos a esta politica "enrich_base_etl"---##
 
 
     PUT /_enrich/policy/enrich_base_etl
@@ -78,7 +79,8 @@
 
 
 #--------crear el ingest papeline que llama al enrich creado------##
-###-----podemos hacer mas cosas aqui con los datos-----#########
+###-----llamaremos esta ingespepeline: "pipeline_enrich_crm_info"-----###
+###-----podemos hacer mas cosas aqui con los datos si se desea-----#########
 
     PUT /_ingest/pipeline/pipeline_enrich_crm_info
     {
