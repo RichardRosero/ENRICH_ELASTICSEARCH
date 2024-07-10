@@ -108,12 +108,12 @@
     POST /crm_info/_refresh
 ####---cargamos un documento con solo un dato, debe enriquecerse solo desde la base etl_base--------####
 
-    POST /crm_info/_doc/1
+    POST /crm_info/_doc/2
     { "olt_crm": "olt_a1" }
     
 ###veamos la info que nos dio ya enriquecida
 
-    GET /crm_info/_doc/1
+    GET /crm_info/_doc/2
 
 ################################################
 
