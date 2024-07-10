@@ -1,7 +1,7 @@
 # ENRICH_ELASTICSEARCH
 
 
-###### crear indice que nos dara los datos de enriquecimiento ##
+## crear indice que nos dara los datos de enriquecimiento ##
 
 
       PUT /etl_base
@@ -34,7 +34,7 @@
         }
       }
 
-### insertar informacion a etl_base para hacer el escenario
+## insertar informacion a etl_base para hacer el escenario
 
 
     POST /etl_base/_bulk
@@ -59,7 +59,7 @@
 
 
 
-### COMENZAMOS EL PROCESO ENRICH
+# COMENZAMOS EL PROCESO ENRICH #
 ##--------creamos la politica enrich----------####
 
 
