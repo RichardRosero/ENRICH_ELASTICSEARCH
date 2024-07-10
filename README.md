@@ -81,8 +81,12 @@
 
 
 #--------crear el ingest papeline que llama al enrich creado------##
+
 ###-----llamaremos esta ingespepeline: "pipeline_enrich_crm_info"-----###
+
 ###-----podemos hacer mas cosas aqui con los datos si se desea-----#########
+
+###-----aqui debemos colocar el nombre del campo del indice que sera enriquecido, este debe ser el que hara mach con el campo desde donde se extrae la info, en nuestro caso el nombre del campo del indice crm_info: "field": "olt_crm"-----###
 
     PUT /_ingest/pipeline/pipeline_enrich_crm_info
     {
