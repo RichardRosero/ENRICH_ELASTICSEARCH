@@ -60,7 +60,9 @@
 
 
 # COMENZAMOS EL PROCESO ENRICH #
+
 ##--------creamos la politica enrich----------####
+
 ##---llamaremos a esta politica "enrich_base_etl"---##
 
 
