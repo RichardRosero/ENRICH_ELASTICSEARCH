@@ -146,7 +146,74 @@
 
 ################################################
 
+
     GET /_enrich/policy
     GET /crm_info/_settings
     GET /etl_base/_mapping
     POST /crm_info/_refresh
+
+
+################################################
+##no olvides tener tus dos enrich previamente creados como en los pasos anteriores###
+# --------------combinar dos enrich en un mismo ingest pepeline:--------------------- #
+### dentro de esta configuracion la seccion de sript es para escribir ambos campos que traen los enrich diferente, caso contrario uno sobrescribe al otro  ###
+
+            PUT /_ingest/pipeline/pipeline_enrich_crm5
+            {
+              "processors": [
+                {
+                  "enrich": {
+                    "policy_name": "etl_olt-cty-prov_enrich1",
+                    "field": "hostnameid",
+                    "target_field": "enrich.etl_olt_cty_prov",
+                    "max_matches": 1,
+                    "override": false
+                  }
+                },
+                {
+                  "enrich": {
+                    "policy_name": "productos_ennrich",
+                    "field": "hostnameid",
+                    "target_field": "enrich.productos",
+                    "max_matches": 1,
+                    "override": false
+                  }
+                },
+                {
+                  "script": {
+                    "source": """
+                      if (ctx.enrich.etl_olt_cty_prov != null && ctx.enrich.productos != null) {
+                        ctx.enrich.combined = [
+                          'ciudad': ctx.enrich.etl_olt_cty_prov['ciudad'],
+                          'provincia': ctx.enrich.etl_olt_cty_prov['provincia'],
+                          'colores': ctx.enrich.productos['colores'],
+                          'tamaño': ctx.enrich.productos['tamaño']
+                        ];
+                      } else {
+                        ctx.enrich.combined = [:];
+                      }
+                    """
+                  }
+                }
+              ]
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
